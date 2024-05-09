@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,6 +34,26 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
         log_text = (TextView) this.findViewById(R.id.text_result);
         log_text.setMovementMethod(ScrollingMovementMethod.getInstance());
+        log_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int lines = log_text.getHeight();
+                int lastLine = log_text.getLayout().getHeight();
+                if (lastLine >= lines) {
+                    log_text.scrollTo(0, log_text.getLayout().getLineTop(log_text.getLineCount()) - log_text.getHeight());
+                }
+            }
+        });
         findViewById(R.id.btnSetScreenOff).setOnClickListener(this);
         findViewById(R.id.getPreferredNetworkType).setOnClickListener(this);
         findViewById(R.id.setPreferredNetworkType).setOnClickListener(this);
@@ -73,14 +96,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                     TextViewUtil.infoRedTextView(log_text, str);
                 } else if (msg.what == R.id.log_clear) {
                     log_text.setText("");
-                }
-                if(log_text.getText().length() > 256){
-                    log_text.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            log_text.scrollTo(0, log_text.getLayout().getLineTop(log_text.getLineCount()) - log_text.getHeight());
-                        }
-                    });
+                    log_text.scrollTo(0, 0);
                 }
             }
         };
@@ -196,7 +212,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 systemExtApi.enableAirplaneMode(true);
                 flag = true;
             }else if (index == R.id.settings) {
-                log_text.setText("");
+                writerInLog("", R.id.log_clear);
             }
             if(flag){
                 writerInSuccessLog("result is true!");
