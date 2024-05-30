@@ -292,6 +292,15 @@
                 android:text="SetLanguage"
                 android:textSize="14sp" />
             <Button
+                android:id="@+id/resetLanguage"
+                android:layout_width="115dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_selector"
+                android:text="ResetLanguage"
+                android:textSize="14sp" />
+            <Button
                 android:id="@+id/enableAirplaneMode"
                 android:layout_width="115dp"
                 android:layout_height="60dp"
