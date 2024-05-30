@@ -81,6 +81,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         findViewById(R.id.enableMtp).setOnClickListener(this);
         findViewById(R.id.getMtpStatus).setOnClickListener(this);
         findViewById(R.id.setLanguage).setOnClickListener(this);
+        findViewById(R.id.resetLanguage).setOnClickListener(this);
         findViewById(R.id.enableAirplaneMode).setOnClickListener(this);
         findViewById(R.id.settings).setOnClickListener(this);
         mHandler = new Handler() {
@@ -208,6 +209,8 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 flag = systemExtApi.getMtpStatus();
             } else if (index == R.id.setLanguage) {
                 flag = systemExtApi.setLanguage(Locale.CHINESE.getLanguage(), Locale.CHINESE.getCountry(), Locale.CHINESE.getVariant());
+            } else if (index == R.id.resetLanguage) {
+                flag = systemExtApi.setLanguage(Locale.ENGLISH.getLanguage(), Locale.ENGLISH.getCountry(), Locale.ENGLISH.getVariant());
             } else if (index == R.id.enableAirplaneMode) {
                 systemExtApi.enableAirplaneMode(true);
                 flag = true;
