@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CLOUDPOS_SET_MOBILE_DATA"/>
     <uses-permission android:name="android.permission.CLOUDPOS_SET_USR_PROP"/>
     <uses-permission android:name="android.permission.CLOUDPOS_DISABLE_POWER_KEY" />
+    <uses-permission android:name="android.permission.CLOUDPOS_LOCK_STATUS_BAR" />
 
     <application
         android:allowBackup="true"
