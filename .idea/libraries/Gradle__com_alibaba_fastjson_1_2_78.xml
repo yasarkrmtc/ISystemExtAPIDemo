@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.alibaba:fastjson:1.2.78">
+  <library name="Gradle: com.alibaba:fastjson:1.2.78" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.78/119651d0f0d9cd5bfb35e8885a447e957cdc3a29/fastjson-1.2.78.jar!/" />
     </CLASSES>
